@@ -9,7 +9,7 @@
 #include "pluginapi.h"
 
 HANDLE g_hInstance;
-extern struct LIST g_arrays;
+struct LIST g_arrays;
 
 // Frees memory on plug-in unload.
 static UINT_PTR PluginCallback(enum NSPIM msg)

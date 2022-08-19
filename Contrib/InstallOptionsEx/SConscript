@@ -1,0 +1,43 @@
+target = 'InstallOptionsEx'
+
+files = Split("""
+	InstallerOptions.cpp
+""")
+
+resources = Split("""
+	ioptdll.rc
+""")
+
+libs = Split("""
+	kernel32
+	user32
+	gdi32
+	comctl32
+	comdlg32
+	ole32
+	oleaut32
+	shell32
+	shlwapi
+	mingwex
+	msvcrt
+	gcc
+	kernel32
+	uuid
+""")
+
+examples = Split("""
+""")
+
+docs = Split("""
+""")
+
+Import('BuildPlugin env plugin_env plugin_uenv')
+
+unicodetarget = 'UNICODE' in env['CPPDEFINES']
+plugin_envT = plugin_env
+if unicodetarget:
+	plugin_envT = plugin_uenv
+
+plugin_envT.Append(CCFLAGS = ['-fpermissive', '-Wno-unused-variable'])
+
+BuildPlugin(target, files, libs, examples, docs, res = resources)

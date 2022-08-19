@@ -12,7 +12,7 @@ o--------------------------------------------------------------------------o
 #include "SkinnedControls.h"
 
 //Implementation
-void main(){}
+int _main(){return 0;}
 // makes a smaller DLL file
 BOOL WINAPI _DllMainCRTStartup(HINSTANCE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
@@ -45,7 +45,7 @@ LRESULT CALLBACK ChildDlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 	{
 		if (a = WADlg_handleDialogMsgs(hwnd, uMsg, wParam, lParam))
 		{
-			SetWindowLong(hwnd, DWL_MSGRESULT, (LONG)a);
+			SetWindowLong(hwnd, DWLP_MSGRESULT, (LONG)a);
 			return a;
 		}
 

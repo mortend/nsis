@@ -1,0 +1,33 @@
+target = 'AccessControl'
+
+files = Split("""
+	AccessControl.cpp
+""")
+
+resources = Split("""
+	AccessControl.rc
+""")
+
+libs = Split("""
+	kernel32
+	user32
+	gdi32
+	advapi32
+""")
+
+examples = Split("""
+""")
+
+docs = Split("""
+""")
+
+Import('BuildPlugin env plugin_env plugin_uenv')
+
+unicodetarget = 'UNICODE' in env['CPPDEFINES']
+plugin_envT = plugin_env
+if unicodetarget:
+	plugin_envT = plugin_uenv
+
+plugin_envT.Append(CCFLAGS = ['-fpermissive', '-Wno-unused-variable'])
+
+BuildPlugin(target, files, libs, examples, docs, res = resources)

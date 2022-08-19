@@ -14,7 +14,7 @@ o-------------------------------------------------------------------------------
 #include "InstallerOptions.h"
 
 //Implementation
-extern "C" void main(){}
+extern "C" int main(){return 0;}
 
 //================================================================
 // DLLMain
@@ -2432,7 +2432,7 @@ void WINAPI showCfgDlg()
 
 
 
-INT_PTR CALLBACK ParentWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK ParentWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 // Notification System Base Implementation (Depends on Conditions)
 //================================================================

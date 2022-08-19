@@ -1,0 +1,26 @@
+target = 'nsArray'
+
+files = Split("""
+	Array.c
+	nsArray.c
+""")
+
+resources = Split("""
+	nsArray.rc
+""")
+
+libs = Split("""
+	kernel32
+	user32
+	gdi32
+""")
+
+examples = Split("""
+""")
+
+docs = Split("""
+""")
+
+Import('BuildPlugin')
+
+BuildPlugin(target, files, libs, examples, docs, res = resources)

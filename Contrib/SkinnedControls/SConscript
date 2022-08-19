@@ -1,0 +1,29 @@
+target = 'SkinnedControls'
+
+files = Split("""
+	coolsb/coolsb_detours.cpp
+	coolsb/coolsblib.c
+	coolsb/coolscroll.c
+	SkinnedControls.c
+	wa_scrollbars.c
+""")
+
+resources = Split("""
+""")
+
+libs = Split("""
+	kernel32
+	user32
+	gdi32
+	msvcrt
+""")
+
+examples = Split("""
+""")
+
+docs = Split("""
+""")
+
+Import('BuildPlugin')
+
+BuildPlugin(target, files, libs, examples, docs, res = resources)

@@ -72,7 +72,7 @@ enum SA_FLAGS
 #endif
 
 // The list of arrays.
-struct LIST g_arrays;
+extern struct LIST g_arrays;
 
 // Initializes pointers to NULL and array count to 0.
 void InitArrays();

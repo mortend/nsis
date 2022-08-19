@@ -756,6 +756,8 @@ static DWORD ChangeOwner(const SchemeType* scheme, TCHAR* path, ChangeMode mode,
   PSID pSid = NULL, pSidOwner = NULL, pSidGroup = NULL;
   SECURITY_INFORMATION what;
   HANDLE hToken;
+  BOOL privRe;
+  BOOL privTO;
 
   if (popstring(param))
     ABORT("Trustee is missing");
@@ -785,8 +787,8 @@ static DWORD ChangeOwner(const SchemeType* scheme, TCHAR* path, ChangeMode mode,
 
   // You only need WRITE_OWNER to change the owner of the object to yourself
   // blogs.msdn.com/b/oldnewthing/archive/2005/08/18/453054.aspx
-  BOOL privRe = SetPrivilege(hToken, SE_RESTORE_NAME, TRUE);
-  BOOL privTO = SetPrivilege(hToken, SE_TAKE_OWNERSHIP_NAME, TRUE);
+  privRe = SetPrivilege(hToken, SE_RESTORE_NAME, TRUE);
+  privTO = SetPrivilege(hToken, SE_TAKE_OWNERSHIP_NAME, TRUE);
 
   ret = MySetNamedSecurityInfo(scheme, path, what, pSidOwner, pSidGroup, NULL, options);
 
